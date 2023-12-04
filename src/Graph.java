@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.ListIterator;
@@ -12,6 +13,7 @@ import java.util.Queue;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 /**
  * A simple weighted, directed, graph.
@@ -758,5 +760,44 @@ public class Graph {
     } // if
     return num;
   } // safeVertexNumber(String)
+
+
+
+  /**
+   * Prims Algorithm
+   */
+
+  public ArrayList<Edge> primsAlgoritm(Graph graph) {
+    /**
+     * Construct comparator
+     */
+    Comparator<Edge> compare = new Comparator<Edge>() {
+      @Override
+      public int compare(Edge arg0, Edge arg1) {
+          if (arg0.weight() > arg1.weight()){
+            return 1;
+          } else if (arg0.weight() < arg1.weight()){
+            return -1;
+          } else{
+            return 0;
+          }
+      }
+    };
+
+    /**
+     * Create a priority que for remaining edges 
+     * Create an array list for edges already connected
+     */
+    PriorityQueue<Edge> REMAINING = new PriorityQueue<Edge>(compare);
+    ArrayList<Edge> mst = new ArrayList<Edge>();
+
+    /**
+     * Loop through unused vertices and prioritize
+     */
+    
+
+    //Return our tree
+    return mst;
+  }
 
 } // class Graph
